@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <H3>Update Item</H3>
+    <form action="/update/{{todo.sno}}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1">Title</label>
+            <input type="text" name="item" class="form-control" id="todoItem" aria-describedby="todoHelp"
+                value="{{ todo.item }}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1">Description</label>
+            <input type="text" name="desc" class="form-control" id="todoDesc" value="{{ todo.desc }}">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary sm-3">Update</button>
+        </div>
+    </form>
+{% endblock body %}

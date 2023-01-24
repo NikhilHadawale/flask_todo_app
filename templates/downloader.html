@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+    <H3>Search Video</H3>
+    <form action="/downloader" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1">URL</label>
+            <input type="text" name="link" class="form-control" id="vdolink" aria-describedby="vdohelp"
+                name="link" placeholder="Enter URL">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-danger sm">search</button>
+        </div>
+    </form>
+    {% if vdo is defined%}
+    <div class="card" style="width: 18rem;">
+        <img src="{{vdo.thumbnail}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{vdo.name}}</h5>
+          <p class="card-text">{{vdo.author}}</p>
+          <a href="/downloader/{{vdo.link}}"><button type="button" class="btn btn-danger btn-sm">Download</button>
+        </div>
+      </div>
+    {% endif %}
+{% endblock body %}

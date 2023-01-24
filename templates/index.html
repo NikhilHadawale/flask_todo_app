@@ -1,0 +1,51 @@
+  {% extends 'base.html' %}
+  {% block body %}
+  <div class="container">
+  <H3>Add Item</H3>
+    <form action="/" method="post">
+      <div class="mb-3">
+        <label for="exampleInputEmail1">Title</label>
+        <input type="text" name="item" class="form-control" id="todoItem" aria-describedby="todoHelp" placeholder="Todo Item">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1">Description</label>
+        <input type="text" name="desc" class="form-control" id="todoDesc" placeholder="Description">
+      </div>
+      <div class="mb-3">
+      <button type="submit" class="btn btn-primary sm-3">Add</button>
+      </div>
+    </form>
+  {% if alltodo|length == 0 %}
+    <div class="alert alert-primary" role="alert">
+      No Item in Todo List
+    </div>
+  {% else %}
+  <div class="container my-3">
+  <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Description</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in alltodo %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{item.item}}</td>
+            <td>{{item.desc}}</td>
+            <td>{{item.date_created}}</td>
+            <td><a href="/delete/{{item.sno}}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a>
+            <a href="/update/{{item.sno}}"><button type="button" class="btn btn-outline-warning btn-sm">Update</button>
+            </a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+  {% endblock body %}  
